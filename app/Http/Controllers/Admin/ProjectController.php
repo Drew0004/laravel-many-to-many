@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -21,13 +22,15 @@ class ProjectController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { {
-            $projects = Project::all();
+    { 
+        $projects = Project::all();
 
-            $types = Type::all();
+        $types = Type::all();
 
-            return view('admin.projects.index', compact('projects', 'types'));
-        }
+        $technologies = Technology::all();
+
+        return view('admin.projects.index', compact('projects', 'types', 'technologies'));
+        
     }
 
     /**
