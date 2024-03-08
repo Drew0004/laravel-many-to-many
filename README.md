@@ -69,7 +69,7 @@ creare la migration per la tabella technologies --OK
 creare il model Technology --OK
 creare la migration per la tabella pivot project_technology --OK
 aggiungere ai model Technology e Project i metodi per definire la relazione many to many --OK
-visualizzare nella pagina di dettaglio di un progetto le tecnologie utilizzate, se presenti
+visualizzare nella pagina di dettaglio di un progetto le tecnologie utilizzate, se presenti --OK
 permettere all'utente di associare le tecnologie nella pagina di creazione e modifica di un progetto
 gestire il salvataggio dell'associazione progetto-tecnologie con opportune regole di validazione
 Bonus 1:

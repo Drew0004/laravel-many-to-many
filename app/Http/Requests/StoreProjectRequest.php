@@ -26,6 +26,7 @@ class StoreProjectRequest extends FormRequest
             'description'=> 'required|max:1024',
             'type_id'=>'nullable|exists:types,id',
             'client'=> 'required|max:46',
+            'technologies' => 'nullable|array|exists:technologies,id'
         ];
     }
 
@@ -38,6 +39,7 @@ class StoreProjectRequest extends FormRequest
             'description.max' => 'Errore! Hai inserito troppi caratteri.',
             'client.required' => 'Errore! Il campo è obbligatorio',
             'client.max' => 'Errore! Hai inserito troppi caratteri.',
+            'technologies.exist'=> 'Errore! Il valore non esiste'
         ];
     }
 }

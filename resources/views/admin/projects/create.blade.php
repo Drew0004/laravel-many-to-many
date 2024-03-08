@@ -52,6 +52,24 @@
 
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white">Tecnologie</label>
+        
+                        <div>
+                            @foreach ($technologies as $technology)
+                                <div class="form-check form-check-inline">
+                                    <input
+                                        {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}
+                                        class="form-check-input text-white"
+                                        type="checkbox"
+                                        id="technology-{{ $technology->id }}"
+                                        name="technologies[]"
+                                        value="{{ $technology->id }}">
+                                    <label class="form-check-label text-white" for="technology-{{ $technology->id }}">{{ $technology->title }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="my-3">
                         <label for="description" class="form-label text-white">Descrizione*</label>
                         <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" placeholder="Aggiungi una descrizione" maxlength="1024" required>{{ old('description') }}</textarea>

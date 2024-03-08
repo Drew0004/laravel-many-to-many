@@ -38,8 +38,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -51,6 +52,18 @@ class ProjectController extends Controller
         $slug = Str::slug($projectData['title']);
         $projectData['slug'] = $slug;
         $project = Project::create($projectData);
+
+        if (isset($projectData['technologies'])) {
+            foreach ($projectData['technologies'] as $singleTechnologyID) {
+                /*
+                    project_id     |   technology_id
+                    ----------------------
+                    $project->id   |  $singleTechnologyID
+                */
+                $project->technologies()->attach($singleTechnologyID);
+            }
+        }
+        
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
