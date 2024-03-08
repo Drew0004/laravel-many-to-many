@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Guest\ProjectController as GuestProjectController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
@@ -38,6 +39,7 @@ Route::prefix('admin')
     Route::get('/dashboard', [AdminMainController::class, 'dashboard'])->name('dashboard');
     Route::resource('projects', AdminProjectController::class);
     Route::resource('types', TypeController::class);
+    Route::resource('technologies', TechnologyController::class);
 });
 
 require __DIR__.'/auth.php';
