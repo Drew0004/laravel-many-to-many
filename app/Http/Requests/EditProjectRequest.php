@@ -26,6 +26,7 @@ class EditProjectRequest extends FormRequest
             'description' => 'required|string|max:1024',
             'type_id'=>'nullable|exists:types,id',
             'client' => 'required|string|max:46',
+            'technologies' => 'nullable|array|exists:technologies,id'
         ];
     }
     public function messages(): array
@@ -37,6 +38,7 @@ class EditProjectRequest extends FormRequest
             'description.max' => 'Errore! Hai inserito troppi caratteri.',
             'client.required' => 'Errore! Il campo è obbligatorio',
             'client.max' => 'Errore! Hai inserito troppi caratteri.',
+            'technologies.exist'=> 'Errore! Il valore non esiste'
         ];
     }
 }

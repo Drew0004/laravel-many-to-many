@@ -38,6 +38,31 @@
 
                 </select>
             </div>
+            <div class="mb-3">
+                <label class="form-label">Tecnologie</label>
+
+                <div>
+                    @foreach ($technologies as $technology)
+                        <div class="form-check form-check-inline">
+                            <input
+                                {{-- Se c'è l'old, vuol dire che c'è stato un errore --}}
+                                @if ($errors->any())
+                                    {{-- Faccio le verifiche sull'old --}}
+                                    {{ in_array($technology->id, old('technology', [])) ? 'checked' : '' }}
+                                @else
+                                    {{-- Faccio le verifiche sulla collezione --}}
+                                    {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}
+                                @endif
+                                class="form-check-input"
+                                type="checkbox"
+                                id="technology-{{ $technology->id }}"
+                                name="technologies[]"
+                                value="{{ $technology->id }}">
+                            <label class="form-check-label" for="technology-{{ $technology->id }}">{{ $technology->title }}</label>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
             <div class="my-3">
                 <label for="description" class="form-label text-white">Descrizione*</label>
                 <textarea  class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" placeholder="Aggiungi una descrizione" maxlength="1024" required>
