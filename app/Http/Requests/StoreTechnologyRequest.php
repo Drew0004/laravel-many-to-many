@@ -11,7 +11,7 @@ class StoreTechnologyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class StoreTechnologyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'=> 'required|max:200',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Errore! Il campo è obbligatorio',
+            'title.max' => 'Errore! Hai inserito troppi caratteri.',
         ];
     }
 }
