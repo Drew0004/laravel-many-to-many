@@ -39,7 +39,7 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-warning" href="{{ route('admin.technologies.edit',['technology' => $technology->slug]) }}">
-                                        edit
+                                        Edit
                                     </a>
                                 </td>
                                 {{-- <td>
