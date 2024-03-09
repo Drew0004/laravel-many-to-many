@@ -35,6 +35,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.types.create') }}">Crea una nuova tipologia</a>
                             </li>
+                            <li class="nav-item ms-5">
+                                <a class="nav-link" href="{{ route('admin.technologies.index') }}">Tutte le tecnologie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.technologies.create') }}">Crea una nuova tecnologia</a>
+                            </li>
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
