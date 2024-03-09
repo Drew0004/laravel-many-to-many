@@ -70,10 +70,10 @@ creare il model Technology --OK
 creare la migration per la tabella pivot project_technology --OK
 aggiungere ai model Technology e Project i metodi per definire la relazione many to many --OK
 visualizzare nella pagina di dettaglio di un progetto le tecnologie utilizzate, se presenti --OK
-permettere all'utente di associare le tecnologie nella pagina di creazione e modifica di un progetto
-gestire il salvataggio dell'associazione progetto-tecnologie con opportune regole di validazione
+permettere all'utente di associare le tecnologie nella pagina di creazione e modifica di un progetto --OK
+gestire il salvataggio dell'associazione progetto-tecnologie con opportune regole di validazione --OK
 Bonus 1:
-creare il seeder per il model Technology.
+creare il seeder per il model Technology. --OK
 Bonus 2:
 aggiungere le operazioni CRUD per il model Technology, in modo da gestire le tecnologie utilizzate 
 nei progetti direttamente dal pannello di amministrazione.
