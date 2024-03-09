@@ -78,8 +78,12 @@ class TechnologyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Technology $technology)
+    public function destroy(string $slug)
     {
-        //
+        $technology = Technology::where('slug', $slug)->firstOrFail();
+        
+        $technology->delete();
+
+        return redirect()->route('admin.technologies.index');
     }
 }
