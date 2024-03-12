@@ -102,8 +102,25 @@ class ProjectController extends Controller
     {
         $projectData = $request->validated();
         $project = Project::where('slug', $slug)->firstOrFail();
+
+        $coverImgPath = $project->cover_img;
+        if (isset($projectData['cover_img'])) {
+            if ($coverImgPath != null) {
+                Storage::disk('public')->delete($coverImgPath);
+            }
+
+            $coverImgPath = Storage::disk('public')->put('images', $projectData['cover_img']);
+        }
+        else if (isset($projectData['delete_cover_img'])) {
+            Storage::disk('public')->delete($coverImgPath);
+
+            $coverImgPath = null;
+        }
+
+
         $slug = Str::slug($projectData['title']);
         $projectData['slug'] = $slug;
+        $projectData['cover_img'] = $coverImgPath; 
         $project->updateOrFail($projectData);
 
         if (isset($projectData['technologies'])) {

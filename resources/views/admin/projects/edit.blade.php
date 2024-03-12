@@ -13,7 +13,7 @@
                     </ul>
                 </div>
             @endif
-        <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
+        <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="my-3">
@@ -63,6 +63,30 @@
                     @endforeach
                 </div>
             </div>
+            <div class="mb-3">
+                <label for="cover_img" class="form-label text-white">Inserisci un'immagine</label>
+                <input class="form-control @error('cover_img') is-invalid @enderror" type="file" id="cover_img" name="cover_img">
+
+                @if ($project->cover_img != null)
+                <div class="mt-2">
+                    <h4 class="text-white">
+                        Copertina attuale:
+                    </h4>
+                    <img src="/storage/{{ $project->cover_img }}" style="max-width: 200px;">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" id="delete_cover_img" name="delete_cover_img">
+                        <label class="form-check-label" for="delete_cover_img">
+                            Rimuovi immagine
+                        </label>
+                    </div>
+                </div>
+            @endif
+            </div>
+            @error('cover_img')
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+            @enderror
             <div class="my-3">
                 <label for="description" class="form-label text-white">Descrizione*</label>
                 <textarea  class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" placeholder="Aggiungi una descrizione" maxlength="1024" required>

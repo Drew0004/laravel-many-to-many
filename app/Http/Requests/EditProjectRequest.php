@@ -26,7 +26,9 @@ class EditProjectRequest extends FormRequest
             'description' => 'required|string|max:1024',
             'type_id'=>'nullable|exists:types,id',
             'client' => 'required|string|max:46',
-            'technologies' => 'nullable|array|exists:technologies,id'
+            'technologies' => 'nullable|array|exists:technologies,id',
+            'cover_img' => 'nullable|image',
+            'delete_cover_img' => 'nullable|boolean',
         ];
     }
     public function messages(): array
