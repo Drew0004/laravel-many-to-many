@@ -40,7 +40,9 @@ class EditProjectRequest extends FormRequest
             'description.max' => 'Errore! Hai inserito troppi caratteri.',
             'client.required' => 'Errore! Il campo è obbligatorio',
             'client.max' => 'Errore! Hai inserito troppi caratteri.',
-            'technologies.exist'=> 'Errore! Il valore non esiste'
+            'technologies.exist'=> 'Errore! Il valore non esiste',
+            'cover_img.image' => 'Errore! Il file inserito non è un immagine',
+            'delete_cover_img.boolean' => 'Errore! Il valore inserito non rientra tra 0 e 1',
         ];
     }
 }
