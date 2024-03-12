@@ -22,6 +22,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Type</th>
                             <th scope="col">Technologies</th>
+                            <th scope="col">Immagine</th>
                             <th scope="col">Description</th>
                             <th scope="col">Slug</th>
                             <th scope="col">Client</th>
@@ -46,6 +47,11 @@
                                     -
                                 @endforelse
                             </td>
+                            @if ($project->cover_img != null)
+                                <td><img style="width: 100px" src="{{ asset('storage/'.$project->cover_img) }}" alt=""></td>
+                            @else 
+                                <td>Image not found</td>
+                            @endif
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->slug }}</td>
                             <td>{{ $project->client }}</td>

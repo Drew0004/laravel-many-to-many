@@ -15,6 +15,7 @@ class Project extends Model
         'type_id',
         'slug',
         'client',
+        'cover_img'
     ];
 
     /*

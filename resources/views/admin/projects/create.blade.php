@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div>
-                <form action="{{ route('admin.projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="my-3">
                         <label for="title" class="form-label text-white">Titolo*</label>
@@ -70,6 +70,15 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <label for="cover_img" class="form-label text-white">Inserisci un'immagine</label>
+                        <input class="form-control @error('cover_img') is-invalid @enderror" type="file" id="cover_img" name="cover_img">
+                    </div>
+                    @error('cover_img')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     <div class="my-3">
                         <label for="description" class="form-label text-white">Descrizione*</label>
                         <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" placeholder="Aggiungi una descrizione" maxlength="1024" required>{{ old('description') }}</textarea>

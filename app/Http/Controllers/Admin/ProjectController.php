@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Exception;
 // Helpers
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 // Form Requests
 use App\Http\Requests\StoreProjectRequest;
@@ -49,8 +50,14 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $projectData = $request->validated();
+        
+        $coverImgPath = null;
+        if (isset($projectData['cover_img'])) {
+            $coverImgPath = Storage::disk('public')->put('images', $projectData['cover_img']);
+        }
         $slug = Str::slug($projectData['title']);
         $projectData['slug'] = $slug;
+        $projectData['cover_img'] = $coverImgPath;
         $project = Project::create($projectData);
 
         if (isset($projectData['technologies'])) {
